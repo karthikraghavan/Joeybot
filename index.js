@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            if (event.message.text=="What si my checking account balance")
+            if (event.message.text=="What is my checking account balance")
                 sendMessage(event.sender.id, { text: "Checking account balance is $50" });
             else (event.message.text == "send $50 to Joey")
                 sendMessage(event.sender.id, { text: "Transfer completed successfully" });
