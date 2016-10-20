@@ -82,7 +82,7 @@ function sendGenericMessage(sender) {
                         'buttons': [
                               {
                                   'type': 'postback',
-                                  'title': '',
+                                  'title': 'Postback',
                                   'payload': 'The selected deal is available for use'
                               }
                         ]
@@ -94,7 +94,7 @@ function sendGenericMessage(sender) {
                         'buttons': [
                               {
                                   'type': 'postback',
-                                  'title': '',
+                                  'title': 'Postback',
                                   'payload': 'The selected deal is available for use'
                               }
                         ]
