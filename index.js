@@ -42,10 +42,10 @@ app.post('/webhook', function (req, res) {
             if (event.message.text == "Deals") {
                 sendGenericMessage(event.sender.id);
             }
-            if (event.postback) {
-                let text = JSON.stringify(event.postback)
-                sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
-            }
+            //if (event.postback) {
+            //    let text = JSON.stringify(event.postback)
+            //    sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
+            //}
 
         }
     }
