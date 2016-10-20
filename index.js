@@ -77,16 +77,14 @@ function sendGenericMessage(sender) {
                 template_type: 'generic',
                 elements: [
                     {
-                        title: '24th Street',
-                        'subtitle': '43 mins, 9 cars. 58 mins, 9 cars. 73 mins, 9 cars.'
+                        title: 'Hulu',
+                        'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
+                        'image_url': "https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png"
                     },
                     {
-                        title: 'Daly City',
-                        'subtitle': '43 mins, 9 cars. 58 mins, 9 cars. 73 mins, 9 cars. 1 min, 9 cars. 4 mins, 9 cars.'
-                    },
-                    {
-                        title: 'Millbrae',
-                        'subtitle': '8 mins, 4 cars. 23 mins, 4 cars. 38 mins, 4 cars. 13 mins, 5 cars.'
+                        title: 'Chuck E. Cheese',
+                        'subtitle': 'Try Chuck E.Cheese amazing Thin and Crispy pizza. Earn 10% cash back on your purchase',
+                        'image_url': "http://www.bbbsnwfl.org/atf/cf/%7B699040E0-8300-400C-BC25-DBDFE2E82B09%7D/Chuck%20E.%20Cheese%20Building.jpg"
                     }
                 ]
             }
