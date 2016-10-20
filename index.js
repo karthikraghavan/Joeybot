@@ -41,7 +41,7 @@ app.post('/webhook', function (req, res) {
             }
             else 
             {
-                sendMessage(event.sender.id, { text: "Invalid; Input" });
+                sendGenericMessage(event.sender.id);
             }
 
         }
