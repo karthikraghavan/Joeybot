@@ -68,7 +68,7 @@ function sendMessage(recipientId, message) {
     });
 };
 
-/*
+
 function sendGenericMessage(sender) {
     let messageData = {
         "attachment": {
@@ -118,7 +118,7 @@ function sendGenericMessage(sender) {
     })
 };
 
-*/
+
 // Spin up the server
 app.listen(app.get('port'), function () {
     console.log('running on port', app.get('port'))
