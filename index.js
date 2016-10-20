@@ -70,37 +70,28 @@ function sendMessage(recipientId, message) {
 
 
 function sendGenericMessage(sender) {
-    let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+    messageData = {
+        attachment: {
+            type: 'template',
+            payload: {
+                template_type: 'generic',
+                elements: [
+                    {
+                        title: '24th Street',
+                        'subtitle': '43 mins, 9 cars. 58 mins, 9 cars. 73 mins, 9 cars.'
+                    },
+                    {
+                        title: 'Daly City',
+                        'subtitle': '43 mins, 9 cars. 58 mins, 9 cars. 73 mins, 9 cars. 1 min, 9 cars. 4 mins, 9 cars.'
+                    },
+                    {
+                        title: 'Millbrae',
+                        'subtitle': '8 mins, 4 cars. 23 mins, 4 cars. 38 mins, 4 cars. 13 mins, 5 cars.'
+                    }
+                ]
             }
         }
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
