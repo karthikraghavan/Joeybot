@@ -30,17 +30,21 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            if (event.message.text == "What is my checking account balance") {
-                sendMessage(event.sender.id, { text: "Checking account balance is $50" });
-            }
-            else if (event.message.text == "send $50 to Joey") {
-                sendMessage(event.sender.id, { text: "Transfer completed successfully" });
-            }
-            else if (event.message.text == "pay $500 to AT&T") {
-                sendMessage(event.sender.id, { text: "Payment completed successfully" });
-            }
-            else if (event.message.text == "Deals") {
+            //if (event.message.text == "What is my checking account balance") {
+            //    sendMessage(event.sender.id, { text: "Checking account balance is $50" });
+            //}
+            //else if (event.message.text == "send $50 to Joey") {
+            //    sendMessage(event.sender.id, { text: "Transfer completed successfully" });
+            //}
+            //else if (event.message.text == "pay $500 to AT&T") {
+            //    sendMessage(event.sender.id, { text: "Payment completed successfully" });
+            //}
+            if (event.message.text == "Deals") {
                 sendGenericMessage(event.sender.id);
+            }
+            if (event.postback) {
+                let text = JSON.stringify(event.postback)
+                sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
             }
 
         }
@@ -82,7 +86,7 @@ function sendGenericMessage(sender) {
                         'buttons': [
                               {
                                   'type': 'postback',
-                                  'title': 'Postback',
+                                  'title': 'Select',
                                   'payload': 'The selected deal is available for use'
                               }
                         ]
@@ -94,7 +98,7 @@ function sendGenericMessage(sender) {
                         'buttons': [
                               {
                                   'type': 'postback',
-                                  'title': 'Postback',
+                                  'title': 'Select',
                                   'payload': 'The selected deal is available for use'
                               }
                         ]
