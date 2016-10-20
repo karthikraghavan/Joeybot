@@ -39,7 +39,7 @@ app.post('/webhook', function (req, res) {
             else if (event.message.text == "pay $500 to AT&T") {
                 sendMessage(event.sender.id, { text: "Payment completed successfully" });
             }
-            else 
+            else if (event.message.text == "Deals")
             {
                 sendGenericMessage(event.sender.id);
             }
