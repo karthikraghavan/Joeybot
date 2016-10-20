@@ -79,12 +79,12 @@ function sendGenericMessage(sender) {
                     {
                         title: 'Hulu',
                         'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
-                        'image_url': "https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png"
+                        'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png'
                     },
                     {
                         title: 'Chuck E. Cheese',
                         'subtitle': 'Try Chuck E.Cheese amazing Thin and Crispy pizza. Earn 10% cash back on your purchase',
-                        'image_url': "http://www.bbbsnwfl.org/atf/cf/%7B699040E0-8300-400C-BC25-DBDFE2E82B09%7D/Chuck%20E.%20Cheese%20Building.jpg"
+                        'image_url': 'http://www.bbbsnwfl.org/atf/cf/%7B699040E0-8300-400C-BC25-DBDFE2E82B09%7D/Chuck%20E.%20Cheese%20Building.jpg''
                     }
                 ]
             }
