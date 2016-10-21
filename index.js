@@ -40,6 +40,7 @@ app.post('/webhook', function (req, res) {
             //    sendMessage(event.sender.id, { text: "Payment completed successfully" });
             //}
             if (event.message.text == "Deals") {
+                console.log("Typed in deals");
                 sendGenericMessage(event.sender.id);
             }
             if (event.postback) {
