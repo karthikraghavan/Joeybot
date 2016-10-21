@@ -43,8 +43,10 @@ app.post('/webhook', function (req, res) {
                 sendGenericMessage(event.sender.id);
             }
             if (event.postback) {
-                var text = JSON.stringify(event.postback)
-                sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
+                //var text = JSON.stringify(event.postback)
+                if (event.postback.payload.indexOf('Select') > -1) {
+                    sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
+                }
             }
 
         }
@@ -87,7 +89,7 @@ function sendGenericMessage(sender) {
                               {
                                   'type': 'postback',
                                   'title': 'Select',
-                                  'payload': 'The selected deal is available for use'
+                                  'payload': 'Select the deal'
                               }
                         ]
                     },
@@ -99,7 +101,7 @@ function sendGenericMessage(sender) {
                               {
                                   'type': 'postback',
                                   'title': 'Select',
-                                  'payload': 'The selected deal is available for use'
+                                  'payload': 'Select the deal'
                               }
                         ]
                     }
