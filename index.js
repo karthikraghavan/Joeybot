@@ -45,6 +45,7 @@ app.post('/webhook', function (req, res) {
             if (event.postback) {
                 //var text = JSON.stringify(event.postback)
                 if (event.postback.payload.indexOf('Select') > -1) {
+                    console.log(event.postback.payload);
                     sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
                 }
             }
