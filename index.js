@@ -31,9 +31,9 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            console.log("Echo: "+ event.message.text);
-            console.log("postback: " + event.postback);
-            console.log("postback payload: " + event.postback.payload)
+            console.log(event.message.text);
+            console.log(event.postback);
+            console.log(event.postback.payload);
             
             //if (event.message.text == "What is my checking account balance") {
             //    sendMessage(event.sender.id, { text: "Checking account balance is $50" });
