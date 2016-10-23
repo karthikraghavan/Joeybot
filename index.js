@@ -89,6 +89,11 @@ function sendGenericMessage(sender) {
                         'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png',
                         'buttons': [
                               {
+                                "type": "web_url",
+                                "url": "https://petersapparel.parseapp.com",
+                                "title": "Show Website"
+                              },
+                              {
                                   'type': 'postback',
                                   'title': 'Select',
                                   'payload': 'Select the deal'
