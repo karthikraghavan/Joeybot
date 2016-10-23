@@ -32,8 +32,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
             console.log(event.message.text);
-            console.log(event.postback);
-            console.log(event.postback.payload);
+            
             
             //if (event.message.text == "What is my checking account balance") {
             //    sendMessage(event.sender.id, { text: "Checking account balance is $50" });
@@ -49,6 +48,8 @@ app.post('/webhook', function (req, res) {
                 sendGenericMessage(event.sender.id);
             }
             else if (event.postback && event.postback.payload) {
+                console.log(event.postback);
+                console.log(event.postback.payload);
                 //var text = JSON.stringify(event.postback)
                 if (event.postback.payload.indexOf('Select') > -1) {
                     console.log(event.postback.payload);
