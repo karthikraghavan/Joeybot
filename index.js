@@ -31,7 +31,10 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            console.log(event.message.text);
+            console.log("Echo: "+ event.message.text);
+            console.log("postback: " + event.postback);
+            console.log("postback payload: " + event.postback.payload)
+            
             //if (event.message.text == "What is my checking account balance") {
             //    sendMessage(event.sender.id, { text: "Checking account balance is $50" });
             //}
@@ -42,10 +45,10 @@ app.post('/webhook', function (req, res) {
             //    sendMessage(event.sender.id, { text: "Payment completed successfully" });
             //}
             if (event.message.text == "Deals") {
-                console.log("Typed in deals");
+                
                 sendGenericMessage(event.sender.id);
             }
-            if (event.postback) {
+            else if (event.postback && event.postback.payload) {
                 //var text = JSON.stringify(event.postback)
                 if (event.postback.payload.indexOf('Select') > -1) {
                     console.log(event.postback.payload);
