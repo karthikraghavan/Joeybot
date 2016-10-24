@@ -3,6 +3,46 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 
+var messageData = {
+    attachment: {
+        type: 'template',
+        payload: {
+            template_type: 'generic',
+            elements: [
+                {
+                    title: 'Hulu',
+                    'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
+                    'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png',
+                    'buttons': [
+                          {
+                              "type": "web_url",
+                              "url": "https://bankofamerica.com/mobile",
+                              "title": "Show Website"
+                          },
+                          {
+                              'type': 'postback',
+                              'title': 'Select',
+                              'payload': 'postback deal 1'
+                          }
+                    ]
+                },
+                {
+                    title: 'Chuck E. Cheese',
+                    'subtitle': 'Try Chuck E.Cheese amazing Thin and Crispy pizza. Earn 10% cash back on your purchase',
+                    'image_url': 'http://www.bbbsnwfl.org/atf/cf/%7B699040E0-8300-400C-BC25-DBDFE2E82B09%7D/Chuck%20E.%20Cheese%20Building.jpg',
+                    'buttons': [
+                          {
+                              'type': 'postback',
+                              'title': 'Select',
+                              'payload': 'postback deal 2'
+                          }
+                    ]
+                }
+            ]
+        }
+    }
+}
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -83,45 +123,7 @@ function sendMessage(recipientId, message) {
 
 
 function sendGenericMessage(sender) {
-    messageData = {
-        attachment: {
-            type: 'template',
-            payload: {
-                template_type: 'generic',
-                elements: [
-                    {
-                        title: 'Hulu',
-                        'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
-                        'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png',
-                        'buttons': [
-                              {
-                                "type": "web_url",
-                                "url": "https://petersapparel.parseapp.com",
-                                "title": "Show Website"
-                              },
-                              {
-                                  'type': 'postback',
-                                  'title': 'Select',
-                                  'payload': 'Select the deal'
-                              }
-                        ]
-                    },
-                    {
-                        title: 'Chuck E. Cheese',
-                        'subtitle': 'Try Chuck E.Cheese amazing Thin and Crispy pizza. Earn 10% cash back on your purchase',
-                        'image_url': 'http://www.bbbsnwfl.org/atf/cf/%7B699040E0-8300-400C-BC25-DBDFE2E82B09%7D/Chuck%20E.%20Cheese%20Building.jpg',
-                        'buttons': [
-                              {
-                                  'type': 'postback',
-                                  'title': 'Select',
-                                  'payload': 'Select the deal'
-                              }
-                        ]
-                    }
-                ]
-            }
-        }
-    };
+    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
