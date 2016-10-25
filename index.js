@@ -76,30 +76,19 @@ app.post('/webhook', function (req, res) {
         console.log("2. ***************");
         console.log(event.message);
         if (event.message && event.message.text) {
-            
-            
-            //if (event.message.text == "What is my checking account balance") {
-            //    sendMessage(event.sender.id, { text: "Checking account balance is $50" });
-            //}
-            //else if (event.message.text == "send $50 to Joey") {
-            //    sendMessage(event.sender.id, { text: "Transfer completed successfully" });
-            //}
-            //else if (event.message.text == "pay $500 to AT&T") {
-            //    sendMessage(event.sender.id, { text: "Payment completed successfully" });
-            //}
+           
             if (event.message.text == "Deals") {
                 
                 sendGenericMessage(event.sender.id);
             }
-            else if (event.postback && event.postback.payload) {
-                var text = JSON.stringify(event.postback);
-                console.log(text);
-                if (event.postback.payload.indexOf('postback') > -1) {
-                    console.log(event.postback.payload);
-                    sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
-                }
+        }
+        else if (event.postback && event.postback.payload) {
+            var text = JSON.stringify(event.postback);
+            console.log(text);
+            if (event.postback.payload.indexOf('postback') > -1) {
+                console.log(event.postback.payload);
+                sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
             }
-
         }
     }
     res.sendStatus(200);
