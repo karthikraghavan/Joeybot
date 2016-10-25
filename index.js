@@ -3,6 +3,12 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 
+var welcomeMessage = {
+    "setting_type": 'greeting',
+    "greeting": {
+        'text': 'Hello {{user_first_name}}, I am the Joey bot - I can help you with your Banking & Financial needs!'
+    }
+}
 var messageData = {
     attachment: {
         type: 'template',
@@ -59,7 +65,8 @@ app.get('/', function (req, res) {
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
-        res.send(req.query['hub.challenge'])
+        res.send(req.query['hub.challenge']);
+        sendWelcomeMessage();
     }
     res.send('Error, wrong token')
 })
@@ -70,11 +77,6 @@ app.post('/webhook', function (req, res) {
     
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        console.log(events[i]);
-        console.log("*****************");
-        console.log(event);
-        console.log("2. ***************");
-        console.log(event.message);
         if (event.message && event.message.text) {
            
             if (event.message.text == "Deals") {
@@ -133,8 +135,27 @@ function sendGenericMessage(sender) {
     });
 };
 
+// generic function sending messages
+function sendWelcomeMessage() {
+    request({
+        url: 'https://graph.facebook.com/v2.6/heybartbot/thread_settings',
+        qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+        method: 'POST',
+        json: {
+            message: welcomeMessage
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 
 // Spin up the server
 app.listen(app.get('port'), function () {
     console.log('running on port', app.get('port'))
 })
+
