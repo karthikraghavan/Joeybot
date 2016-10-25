@@ -70,6 +70,7 @@ app.post('/webhook', function (req, res) {
     
     for (i = 0; i < events.length; i++) {
         var event = events[i];
+        console.log(events[i]);
         if (event.message && event.message.text) {
             console.log(event.message.text);
             
