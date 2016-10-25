@@ -138,7 +138,7 @@ function sendGenericMessage(sender) {
 // generic function sending messages
 function sendWelcomeMessage() {
     request({
-        url: 'https://graph.facebook.com/v2.6/heybartbot/thread_settings',
+        url: 'https://graph.facebook.com/v2.6/me/thread_settings',
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
         method: 'POST',
         json: {
