@@ -91,8 +91,9 @@ app.post('/webhook', function (req, res) {
                 sendGenericMessage(event.sender.id);
             }
             else if (event.postback && event.postback.payload) {
-                //var text = JSON.stringify(event.postback)
-                if (event.postback.payload.indexOf('Select') > -1) {
+                var text = JSON.stringify(event.postback);
+                console.log(text);
+                if (event.postback.payload.indexOf('postback') > -1) {
                     console.log(event.postback.payload);
                     sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
                 }
