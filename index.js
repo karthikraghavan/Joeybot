@@ -74,6 +74,7 @@ app.post('/webhook', function (req, res) {
         console.log("*****************");
         console.log(event);
         console.log("2. ***************");
+        console.log(event.message);
         if (event.message && event.message.text) {
             
             
