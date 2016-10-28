@@ -16,7 +16,7 @@ var messageData = {
             template_type: 'generic',
             elements: [
                 {
-                    title: 'Hulu',
+                     title: 'Hulu',
                     'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
                     'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png',
                     'buttons': [
@@ -48,6 +48,35 @@ var messageData = {
         }
     }
 }
+var persistantMenu = {
+    "setting_type": "call_to_actions",
+    "thread_state": "existing_thread",
+    "call_to_actions": [
+      {
+          "type": "postback",
+          "title": "Help",
+          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      },
+      {
+          "type": "postback",
+          "title": "Start a New Order",
+          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+      },
+      {
+          "type": "web_url",
+          "title": "Checkout",
+          "url": "http://petersapparel.parseapp.com/checkout",
+          "webview_height_ratio": "full",
+          "messenger_extensions": true
+      },
+      {
+          "type": "web_url",
+          "title": "View Website",
+          "url": "http://petersapparel.parseapp.com/"
+      }
+    ]
+}
+
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -80,15 +109,16 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
            
             if (event.message.text == "Deals") {
-                
-                sendGenericMessage(event.sender.id);
+                   sendGenericMessage(event.sender.id);
+            }
+            else if (event.message.text == "appointment") {
+                sendMessage(event.sender.id, persistantMenu);
             }
         }
         else if (event.postback && event.postback.payload) {
             var text = JSON.stringify(event.postback);
             console.log(text);
             if (event.postback.payload.indexOf('postback') > -1) {
-                console.log(event.postback.payload);
                 sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
             }
         }
