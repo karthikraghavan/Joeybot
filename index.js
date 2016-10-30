@@ -48,34 +48,46 @@ var messageData = {
         }
     }
 }
-var persistantMenu = {
-    "setting_type": "call_to_actions",
-    "thread_state": "existing_thread",
-    "call_to_actions": [
-      {
-          "type": "postback",
-          "title": "Help",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-      },
-      {
-          "type": "postback",
-          "title": "Start a New Order",
-          "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
-      },
-      {
-          "type": "web_url",
-          "title": "Checkout",
-          "url": "http://petersapparel.parseapp.com/checkout",
-          "webview_height_ratio": "full",
-          "messenger_extensions": true
-      },
-      {
-          "type": "web_url",
-          "title": "View Website",
-          "url": "http://petersapparel.parseapp.com/"
-      }
-    ]
+
+var buttonTemplate = {
+    attachment: {
+        type: 'template',
+        payload: {
+            template_type: 'generic',
+            elements: [
+                {
+                    title: 'Schedule an appointment',
+                    'subtitle': 'Lets talk about',
+                    'image_url': '',
+                    'buttons': [
+                          {
+                              'type': 'postback',
+                              'title': 'Banking',
+                              'payload': 'Topics'
+                          },
+                          {
+                              'type': 'postback',
+                              'title': 'Investment',
+                              'payload': 'Topics'
+                          },
+                          {
+                              'type': 'postback',
+                              'title': 'Loans',
+                              'payload': 'Topics'
+                          },
+                          {
+                              'type': 'postback',
+                              'title': 'Small Business',
+                              'payload': 'Topics'
+                          }
+                    ]
+                }
+                
+            ]
+        }
+    }
 }
+
 
 
 app.set('port', (process.env.PORT || 5000))
@@ -112,7 +124,7 @@ app.post('/webhook', function (req, res) {
                    sendGenericMessage(event.sender.id);
             }
             else if (event.message.text == "appointment") {
-                sendMessage(event.sender.id, persistantMenu);
+                sendMessage(event.sender.id, buttonTemplate);
             }
         }
         else if (event.postback && event.postback.payload) {
