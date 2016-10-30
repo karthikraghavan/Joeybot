@@ -56,28 +56,19 @@ var buttonTemplate = {
             template_type: 'generic',
             elements: [
                 {
-                    title: 'Schedule an appointment',
-                    'subtitle': 'Lets talk about',
-                    'image_url': '',
                     'buttons': [
                           {
                               'type': 'postback',
                               'title': 'Banking',
                               'payload': 'Topics'
-                          },
+                          }
+                    ]
+                },
+                {
+                    'buttons': [
                           {
                               'type': 'postback',
                               'title': 'Investment',
-                              'payload': 'Topics'
-                          },
-                          {
-                              'type': 'postback',
-                              'title': 'Loans',
-                              'payload': 'Topics'
-                          },
-                          {
-                              'type': 'postback',
-                              'title': 'Small Business',
                               'payload': 'Topics'
                           }
                     ]
