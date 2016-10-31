@@ -93,7 +93,9 @@ var location = {
     'text': 'Please share your location:',
     'quick_replies': [
       {
-          'content_type': 'location'
+          'content_type': 'location',
+          'title': 'Nearby places',
+          'payload': 'Nearby places'
       }
     ]
 }
