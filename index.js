@@ -56,6 +56,7 @@ var buttonTemplate = {
             template_type: 'generic',
             elements: [
                 {
+                    title: '',
                     'buttons': [
                           {
                               'type': 'postback',
@@ -65,6 +66,7 @@ var buttonTemplate = {
                     ]
                 },
                 {
+                    title: '',
                     'buttons': [
                           {
                               'type': 'postback',
