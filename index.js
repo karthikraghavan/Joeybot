@@ -16,7 +16,7 @@ var messageData = {
             template_type: 'generic',
             elements: [
                 {
-                     title: 'Hulu',
+                    title: 'Hulu',
                     'subtitle': 'Earn $7.99 cash back with your subscription to Hulu. Stream original series, hit shows, movies & more!',
                     'image_url': 'https://www.android.com/intl/zh-TW_hk/new/images/tv/apps/hulu-plus.png',
                     'buttons': [
@@ -56,26 +56,36 @@ var buttonTemplate = {
             template_type: 'generic',
             elements: [
                 {
-                    title: '',
+                    title: 'Swipe to right for more options',
                     'buttons': [
                           {
                               'type': 'postback',
                               'title': 'Banking',
-                              'payload': 'Topics'
-                          }
+                              'payload': 'Topics - Banking'
+                          },
+                           {
+                               'type': 'postback',
+                               'title': 'Investment',
+                               'payload': 'Topics - Investment'
+                           }
                     ]
                 },
                 {
-                    title: '',
+                    title: 'Swipe to left for more options',
                     'buttons': [
                           {
                               'type': 'postback',
-                              'title': 'Investment',
+                              'title': ' - Loans',
                               'payload': 'Topics'
-                          }
+                          },
+                           {
+                               'type': 'postback',
+                               'title': 'Small Business',
+                               'payload': 'Topics - Small Business'
+                           },
                     ]
                 }
-                
+
             ]
         }
     }
@@ -108,15 +118,16 @@ app.get('/webhook/', function (req, res) {
 // handler receiving messages
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
-    
+
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-           
+
             if (event.message.text == "Deals") {
-                   sendGenericMessage(event.sender.id);
+                sendGenericMessage(event.sender.id);
             }
-            else if (event.message.text == "appointment") {
+            else if (event.message.text == "appointment") 
+                sendMessage(event.sender.id, "Let's talk about...");
                 sendMessage(event.sender.id, buttonTemplate);
             }
         }
@@ -152,7 +163,7 @@ function sendMessage(recipientId, message) {
 
 
 function sendGenericMessage(sender) {
-    
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
