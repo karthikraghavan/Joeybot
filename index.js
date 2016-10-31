@@ -48,7 +48,6 @@ var messageData = {
         }
     }
 }
-
 var buttonTemplate = {
     attachment: {
         type: 'template',
@@ -75,7 +74,7 @@ var buttonTemplate = {
                     'buttons': [
                           {
                               'type': 'postback',
-                              'title': ' - Loans',
+                              'title': ' Loans',
                               'payload': 'Topics'
                           },
                            {
@@ -90,8 +89,14 @@ var buttonTemplate = {
         }
     }
 }
-
-
+var location = {
+    "text": "Please share your location:",
+    "quick_replies": [
+      {
+          "content_type": "location",
+      }
+    ]
+}
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -136,6 +141,9 @@ app.post('/webhook', function (req, res) {
             console.log(text);
             if (event.postback.payload.indexOf('postback') > -1) {
                 sendMessage(event.sender.id, { text: "This deal is now active and ready for you to use. Just shop with any of your eligible credit/debit cards." });
+            }
+            else if (event.postback.payload.indexOf('Topics') > -1) {
+                sendMessage(event.sender.id, { text: location });
             }
         }
     }
