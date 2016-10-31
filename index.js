@@ -126,8 +126,8 @@ app.post('/webhook', function (req, res) {
             if (event.message.text == "Deals") {
                 sendGenericMessage(event.sender.id);
             }
-            else if (event.message.text == "appointment") 
-                sendMessage(event.sender.id, "Let's talk about...");
+            else if (event.message.text == "appointment") {
+                sendMessage(event.sender.id, "Lets talk about...");
                 sendMessage(event.sender.id, buttonTemplate);
             }
         }
